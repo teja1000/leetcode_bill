@@ -27,7 +27,7 @@ interface LeetCodeStats {
   }
   try {
     return await response.json()
-  } catch (err) {
+  } catch (_err) {
     throw new Error('Invalid response from LeetCode API')
   }
 }
@@ -74,7 +74,7 @@ export default function Home() {
               url: `https://leetcode.com/${username}`
             })
           }
-        } catch (err) {
+        } catch (_err) {
           // If sharing fails, fall back to download
           handleDownload()
         }
@@ -96,7 +96,7 @@ export default function Home() {
     try {
       const stats = await getLeetCodeStats(username)
       setData(stats)
-    } catch (err) {
+    } catch (_err) {
       setError('User not found')
     } finally {
       setLoading(false)
